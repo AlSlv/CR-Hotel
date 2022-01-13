@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- db에 있는 사원명단 모두 출력해보기 -->
+
+<!-- 
+mapper interface : dao interface 경로를 namespace로
+맵핑될 DAO 인터페이스의 Full name을 줍니다. -->
+<mapper namespace="com.crhotel.kg3.reserve.service.dao.ReserveDAO"> <!-- SawonDAO는 자바쪽 인터페이스 -->
+							<!-- ArrayList <SawonVO> getAllSawon(); -->
+<select id="allRs" resultType="reserveVO">
+SELECT rnum,rmname,MIN(price) AS price FROM RESERVE WHERE rmname =#{rmname} AND NOT ckin BETWEEN #{ckin} AND  #{ckout}
+AND NOT ckout BETWEEN #{ckin} AND  #{ckout} GROUP BY rnum,rmname HAVING MIN(price)>0 ORDER BY rnum
+<!-- 
+SELECT DISTINCT rnum,rmname,price FROM RESERVE WHERE rmname =#{rmname} AND NOT ckin BETWEEN #{ckin} AND  #{ckout}
+AND NOT ckout BETWEEN #{ckin} AND  #{ckout} -->
+</select>
+<insert id="insertRs">
+	INSERT INTO RESERVE(rnum,id,rname,rtel,ckin,ckout,rmname,people,require,price)
+	VALUES (#{rnum},#{id},#{rname},#{rtel},#{ckin},#{ckout},#{rmname},#{people},#{require},#{price})
+</insert>
+<update id="updatey">
+	UPDATE RESERVE SET payYN = #{payYN} WHERE id = #{id}
+</update>
+</mapper>

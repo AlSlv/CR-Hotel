@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- db에 있는 사원명단 모두 출력해보기 -->
+
+<!-- 
+mapper interface : dao interface 경로를 namespace로
+맵핑될 DAO 인터페이스의 Full name을 줍니다. -->
+<mapper namespace="com.crhotel.kg3.room.service.dao.RoomDAO"> <!-- SawonDAO는 자바쪽 인터페이스 -->
+							<!-- ArrayList <SawonVO> getAllSawon(); -->
+<select id="roomList" resultType="roomVO">
+SELECT ROWNUM AS rownm, rm.* FROM ROOM rm
+</select>
+
+<delete id = "roomDelete">
+DELETE FROM room WHERE rnum = #{rnum}
+</delete>
+
+<select id="getRoomInfo" resultType="roomVO">
+SELECT rnum, rmname, roomPrice FROM ROOM WHERE rnum = #{rnum}
+</select>
+
+<update id="roomUpdate">
+UPDATE ROOM SET rmname = #{rmname}, roomPrice = #{roomPrice} WHERE rnum = #{rnum}
+</update>
+
+<insert id="roomInsert">
+INSERT INTO ROOM VALUES (#{rnum},#{rmname},#{roomPrice})
+</insert>
+</mapper>

@@ -1,0 +1,75 @@
+/*reset*/
+html,body{width: 100%;height: 100%}
+body,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,li,ol,table,th,td,form,
+fieldset,legend,input,textarea,button,select{margin: 0;padding: 0;}
+body,input,textarea,select,button,table{font-family: 'Noto Sans KR','맑은 고딕','Malgun Gothic','돋움','Dotum','AppleGothic',sans-serif;font-size: 12px;}
+ul,li,ol{list-style: none}
+em,address{font-style: normal;}
+img {vertical-align: top}
+img,fieldset {border: 0}
+a {text-decoration: none;color:#212121}
+a:hover,a:active,a:focus{text-decoration: none;}
+legend,.blind{display: block;position: absolute;left: 0;top: 0;}
+
+
+
+/* header */
+.container {background-color:#FBF7F2; width:100%;border-bottom:2px solid rgb(255,226,226,.5)}
+#header {position:relative;width:1200px; margin:0 auto;text-align:center;height:146px;}
+
+/* loginArea */
+.loginArea {position:absolute;top:5px;right:30px;}
+.loginArea li {float:left;padding:15px 10px;}
+.loginArea li > a {margin-left:15px;font-size:13px;color:#a76c6c;}
+	/* | 넣기 */
+.loginArea .item:before {content:"";display:inline-block;width:1px;height:11px;margin:0 8px;background-color:#c0c0c0;vertical-align:-1px;}
+
+/* logo */
+.logo {position:relative;top:25px;width:300px;margin:0 auto;}
+
+/* nav */
+.nav {position:relative;top:-3px;}
+.nav .gnb>li {float:left;margin:0 20px;}
+.nav .gnb>li:hover>a{color:orange;}
+.nav .gnb>li:hover .lnb {
+	/* 드롭시 살짝 느린 효과넣기 */
+visibility:visible;
+	opacity:1;
+	transform:translateY(0);
+}
+.nav .gnb li>a {display:block;height:35px;margin-right:15px;margin-left:15px;font-size:18px;font-weight:800;color:#a76c6c;}
+.left {display:inline-block;margin-right:300px;}
+.right{display:inline-block;margin-left:150px;}
+.right .ico_date {display:inline-block;position:relative;left:20px;top:-1px;width:12px;height:12px;background:no-repeat url(../img/ico_date.png);}
+
+
+
+/* nav gnb > lnb */
+.nav .lnb {position:absolute;width:100vw;margin-left: calc(-50vw + 50%);left:0;top:36px;background-color:#d4a591c2;padding:20px;text-align:center;z-index:1;
+	/* 드롭시 살짝 느린 효과넣기 */
+visibility:hidden;
+	opacity:0;
+	transition:.2s ease-in-out;
+	transform:translateY(0);
+
+}
+.nav .lnb_ul {width:1200px;margin:0 auto;}
+.nav .lnb li>a {color:#fff;font-size:15px;font-weight:100;}
+.nav .lnb li>a:hover {text-decoration: underline;}
+.nav .lnb .txt {position:absolute;text-align:left;height:138px;margin-left:150px;}
+.nav .lnb .txt em {display:block;color:#fff;margin:20px 0;font-size:35px;font-weight:normal;}
+.nav .lnb .txt span {color:#b11c1c;}
+
+/* footer */
+#footer {/* position:absolute;bottom:0;width:100%; */background-color:#fafbfc;height:200px;}
+.f_inner {width:1200px;margin:0 auto;}
+.f_inner .box {padding:10px 0;overflow:hidden;border-bottom:1px solid #e4e8eb;line-height:32px;}
+.f_inner .linkbox {float:left;margin-left:5px;}
+.f_inner .linkbox li {float:left;}
+.f_inner .sns {float:right;}
+.f_inner .sns img {margin-right:15px;}
+.f_inner .adressbox {float:left;padding:20px 0;margin-left:5px;color:#777;}
+.f_inner .adressbox p {padding:5px 0;}
+	/* | 넣기 */
+.f_inner .item:before {content:"";display:inline-block;width:1px;height:11px;margin:0 8px;background-color:#c0c0c0;vertical-align:-1px;}
+.f_inner .f_logo {float:right;padding:10px 0;}
