@@ -11,7 +11,7 @@
 <body onload="javascript:openPopup('popup.do')"> 
 
 <script>
-	location.href="index.do";
+	location.href="index.do"
 </script>
 
 </body>
