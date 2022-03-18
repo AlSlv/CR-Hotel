@@ -13,7 +13,7 @@
 </head>
 <body>
 <%--
-footer /body 위에 추가
+footer /body 위에 추가하기
 <%@ include file="/WEB-INF/views/include/footer.jsp" %> 
  --%>
 
