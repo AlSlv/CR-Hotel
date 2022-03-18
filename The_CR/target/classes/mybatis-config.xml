@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!-- <mapper namespace="mybatis-config"></mapper> -->
+
+<!-- 나는 mybatis-config.xml -->
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="ReserveVO" type="com.crhotel.kg3.reserve.vo.ReserveVO" />
+		<typeAlias alias="RoomVO" type="com.crhotel.kg3.room.vo.RoomVO" />
+		<typeAlias alias="MemberVO" type="com.crhotel.kg3.member.vo.MemberVO"/>
+		<typeAlias alias="questionVO" type="com.crhotel.kg3.inquery.vo.QuestionVO" />
+		<typeAlias alias="answerVO" type="com.crhotel.kg3.inquery.vo.AnswerVO" />
+	</typeAliases>
+
+</configuration>

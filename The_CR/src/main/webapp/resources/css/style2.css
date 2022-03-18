@@ -1,0 +1,73 @@
+*{
+	list-style: none;
+	text-decoration: none;
+	border-collapse : collapse;
+	margin:0px;
+	padding:0px;
+	color: #000000;
+}
+
+
+
+/* middle고정 */
+#middle:after { content:" "; display:block; clear:both;} 
+#middle {display: flex; justify-content: center; top: 480px;min-width: 1120px;margin: 0 auto; }
+
+
+/* left menu */
+#middle .leftMenu {float: left;width: 220px;padding: 80px 0 80px; background-color:#FBF7F2;}
+
+#middle .leftMenu  h2 { height: 115px; line-height: 46px; font-size: 28px; color: ff7f00; text-align: center; font-weight: bold; }
+#middle .leftMenu  h2 span { display: block; line-height: 26px; font-size: 18px; color: #1a1a1a; }
+#middle .leftMenu .lm ul.list {border-style: 1px solid #ddd;}
+#middle .leftMenu .lm ul.list li {}
+#middle .leftMenu .lm ul.list li a { display: block; height: 46px; line-height: 45px; font-size: 14px; color: #1a1a1a; text-decoration: none; font-weight: bold; border-bottom: 1px solid #ddd; padding-left: 25px; }
+#middle .leftMenu .lm ul.list li a:hover { background-color: #eee; }
+#middle .leftMenu .lm ul.list li.active a { color: #fff; background-color: #ff7f00; }
+/* left menu end*/
+
+/* mainList */
+#middle .menuMenu {min-height: 500px;min-width:850px;float: right; padding: 80px 0 80px; padding-left: 20px; border-bottom: 1px solid #ddd; }
+#middle .menuMenu .menuintro { position: relative; height: 70px; border-bottom: 1px solid #ddd; padding: 0 0 20px; margin-bottom: 30px;}
+#middle .menuMenu .menuintro h3 { line-height: 50px; font-size: 28px; color: #1a1a1a; }
+#middle .menuMenu .menuintro ul.road { position: absolute; right: 0; bottom: 22px; height: 20px;}
+#middle .menuMenu .menuintro ul.road li { float: left; color: #4e4e4e;padding-left: 12px; margin-left: 6px;}
+#middle .menuMenu .menuintro ul.road li.home {padding-left: 16px;}
+
+#middle .menuMenu .contents .pclist1 { border: 5px solid #ddd; border-radius: 10px; align-content: center; text-align: -webkit-center; width: 850px;}
+#middle .menuMenu .contents .pclist { border: 5px solid #ddd; border-radius: 10px; align-content: center; text-align: -webkit-center;}
+#middle .menuMenu .contents .pclist .descWrap{text-align:center;height:500px;line-height:500px;font-size:17px;color:#db3030;}
+#middle .menuMenu .contents .pclist .table { border-collapse: separate; border-spacing: 10px 10px;}
+#middle .menuMenu .contents .pclist .menu .title .stitle{font: italic bold 1em Georgia, serif ; color: green;}
+#middle .menuMenu .contents .pclist .table tr { align-content: center; border-bottom: 2px solid #ddd;}
+#middle .menuMenu .contents .pclist .table tr td{ padding-right: 40px; padding-top: 20px; padding-bottom: 20px; }
+#middle .menuMenu .contents .pclist .table tr td.first { border-right: 2px solid #ddd;}
+#middle .menuMenu .contents .pclist .table tr td:not(.first) { padding-left: 15px;} 
+#middle .menuMenu .contents .pclist .table tr td.first h3 { text-align: center; }
+#middle .menuMenu .contents .pclist input.bt { width: 100px; height: 40px; margin-top: 20px; margin-bottom: 20px; }
+
+#middle .menuMenu .contents .pclist .jido, .img, .in { margin: 20px;  }
+
+
+
+#middle .menuMenu .contents .pclist .menu tr td { padding: 20px; }
+
+
+#middle .menuMenu .contents .pclist .menu h3{ text-decoration: underline; }
+/* mainList end */
+
+.btn {margin:15px;}
+
+/* 문의사항 연락처 */
+#middle .menuMenu .text{font-size: 20px; color: #f3630c;}
+#middle .menuMenu .contact table{ margin: 20px; width:100%; }
+#middle .menuMenu .contact table tr td{ border: 1px solid grey; height:50px; text-align: center; }
+
+#middle .menuMenu .contact table .td1{background-color: #FBF7F2; width:120px; font: bold 1em sans-serif, serif ;}
+#middle .menuMenu .contact table tr td span{font-size:10px;}
+
+/* 버튼 */
+#btn2 { margin:5px; border: 1px solid #000000; background-color:rgba(0,0,0,0); color: black; paddig:5px;
+		border-radius:5px; font-size:5px; padding:10px 20px}
+		
+#btn2:hover{ color:white; background-color:skyblue;}

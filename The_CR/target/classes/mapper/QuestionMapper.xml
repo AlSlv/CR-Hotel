@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crhotel.kg3.inquery.service.dao.QuestionDAO">
+
+	<!-- 전체 게시물 조회 -->
+	<select id="getAllBoard" resultType="questionVO" parameterType="Integer">
+		SELECT * FROM (SELECT A.* ,Rownum Rnum FROM 
+		(SELECT num, title, id, id_sec, qDate, question_type, content, click, secret, answer_check
+		 FROM Qst ORDER BY num desc)A) <![CDATA[WHERE Rnum >= #{rowStart} and Rnum <= #{rowEnd}]]>
+	</select>
+
+	<!-- 클릭한 게시물 조회 -->
+	<select id="getOneQuestion" resultType="questionVO">
+		SELECT num, title, id, id_sec, qDate, question_type, content, click, secret, answer_check
+		 FROM Qst where title=#{title} and num=#{num}
+	</select>
+	
+	<!-- 클릭한 게시물의 답변 조회 -->
+	<select id="getOneAnswer" resultType="answerVO" >
+		SELECT num, qnum, id, aDate, content
+		 FROM Ast where num=#{num}
+	</select>
+	
+	<!-- 검색 게시물 조회 -->
+	<select id="getSearchT" resultType="questionVO" parameterType="String">
+		SELECT num, title, id, id_sec, qDate, question_type, content, click, secret, answer_check
+		 FROM Qst where title like '%'||#{title}||'%'  ORDER BY num desc
+	</select>
+	<select id="getSearchC" resultType="questionVO" parameterType="String">
+		SELECT num, title, id, id_sec, qDate, question_type, content, click, secret, answer_check
+		 FROM Qst where content like '%'||#{content}||'%' ORDER BY num desc
+	</select>
+	<select id="getSearchW" resultType="questionVO" parameterType="String">
+		SELECT num, title, id, id_sec, qDate, question_type, content, click, secret, answer_check
+		 FROM Qst where id like '%'||#{id}||'%' ORDER BY num desc
+	</select>
+	<select id="getSearchTC" resultType="questionVO" parameterType="String">
+		SELECT num, title, id, id_sec, qDate, question_type, content, click, secret, answer_check
+		 FROM Qst where title like '%'||#{title}||'%' OR content like '%'||#{content}||'%' ORDER BY num desc
+	</select>
+
+	<!-- 질문 입력 -->
+	<insert id="insertQuestion">
+		INSERT INTO Qst VALUES (#{num}
+								, #{title}
+								, #{id}
+								, #{id_sec}
+								, sysdate
+								, #{question_type}
+								, #{content}
+								, 0
+								, #{secret}
+								, '답변 대기')
+	</insert>
+	 
+	<!-- 답변 입력 -->
+	<insert id="insertAnswer">
+		INSERT INTO Ast VALUES (#{num}
+								, #{qnum}
+								, #{id}
+								, sysdate
+								, #{content})
+	</insert> 
+
+	<!-- 질문 수정 -->
+	<update id="updateQuestion">
+		UPDATE Qst SET title=#{title}, content=#{content} where num=#{num}
+	</update>
+	
+	<!-- 답변 수정 -->
+	<update id="updateAnswer">
+		UPDATE Ast SET content=#{content} where num=#{num}
+	</update>
+
+	<!-- 조회수 증가 -->
+	<update id="increaseClick">
+		UPDATE Qst SET click=click+1 where num=#{num}
+	</update>
+
+	<!-- 게시물 삭제 -->
+	<delete id="deleteBoard">
+		DELETE FROM Qst where num=#{num}
+	</delete>
+	
+	<delete id="deleteABoard">
+		DELETE FROM Ast where num=#{num}
+	</delete>
+	
+	<!-- 마지막 게시물의 글 번호 조회 -->
+	<select id="getLastNum" resultType="Integer">
+		SELECT num FROM Qst <![CDATA[where rownum <= 1]]> order by num desc
+	</select>
+	
+	<!-- 전체 게시물의 수 조회 -->
+	<select id="getAllCount" resultType="int">
+		SELECT COUNT(*) FROM Qst
+	</select>
+	
+	<!-- 전체 답변의 수 조회 -->
+	<select id="getAllCountA" resultType="int">
+		SELECT COUNT(*) FROM Ast
+	</select>
+	
+	<!-- 전체 답변 소요 시간 조회 -->
+	<select id="getAnswerTime" resultType="int">
+		SELECT SUM(ROUND((a.aDate-q.qDate)*24)) FROM Qst q, Ast a WHERE q.num = a.qnum
+	</select>
+	
+</mapper>

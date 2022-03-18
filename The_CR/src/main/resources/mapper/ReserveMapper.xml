@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- db에 있는 사원명단 모두 출력해보기 -->
+
+<!-- 
+mapper interface : dao interface 경로를 namespace로
+맵핑될 DAO 인터페이스의 Full name을 줍니다. -->
+<mapper namespace="com.crhotel.kg3.reserve.service.dao.ReserveDAO"> <!-- SawonDAO는 자바쪽 인터페이스 -->
+							<!-- ArrayList <SawonVO> getAllSawon(); -->
+<select id="allRs" resultType="reserveVO">
+SELECT rnum,rmname,roomprice AS price FROM ROOM WHERE rnum NOT IN 
+(SELECT rnum FROM RESERVE WHERE ckin BETWEEN #{ckin} AND #{ckout} OR ckout BETWEEN #{ckin} AND #{ckout})
+AND rmname = #{rmname}
+</select>
+<insert id="insertRs">
+INSERT INTO RESERVE
+VALUES (#{res_no},#{rnum},#{id},#{rname},#{rtel},#{ckin},#{ckout},#{rmname},#{people},#{require},#{price})
+</insert>
+
+<select id="ownerRes" resultType="reserveVO">
+SELECT * FROM RESERVE
+</select>
+
+<delete id="ownerResDelete">
+DELETE FROM RESERVE WHERE res_no = #{res_no}
+</delete>
+
+<select id="ownerSearch" resultType="reserveVO">
+SELECT * FROM RESERVE 
+<where> 
+	
+	<if test="select_option=='rname'" >
+		AND rname LIKE '%'||#{keyword}||'%'	
+	
+	</if>
+	<if test="select_option=='id'" >
+		AND id LIKE '%'||#{keyword}||'%'	
+	
+    </if>
+	AND (ckin between #{ckin} and #{ckout}
+	OR 	ckout between #{ckin} and #{ckout})
+</where>
+</select>
+
+<select id="ownersonck" resultType="reserveVO">
+<![CDATA[SELECT rmname,rnum,ckin,ckout,rname,rtel,people,require
+FROM RESERVE WHERE ckin <= TO_CHAR(SYSDATE,'YYYYMMDD') and ckout >= TO_CHAR(SYSDATE,'YYYYMMDD')]]>
+</select>
+
+<select id="myres" resultType="reserveVO">
+SELECT * FROM RESERVE WHERE id = #{id}
+</select>
+
+<update id="resCancle">
+UPDATE RESERVE SET require = '환불 요청' WHERE res_no = #{res_no}
+</update>
+</mapper>
