@@ -13,7 +13,7 @@
 </head>
 <body>
 <%-- 
- 	header  body 아래에 추가하기
+ 	header 사용법 body 아래에 추가하기
 <%@ include file="/WEB-INF/views/include/header.jsp" %> 
 --%>
 <!-- wrapper -->
