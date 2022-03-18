@@ -40,7 +40,7 @@ footer /body 위에 추가
 					<address>제주 서귀포시 중문관광로3번길 486</address>
 					<p>대표이사 : 배경은 &nbsp;대표전화 : 1588-1588 &nbsp;고객문의 : 070-1234-5678</p>
 					<p>사업자등록번호 123-45-67890</p>
-					<p>Copyright (C) C.R HOTEL. All Rights Reserved</p>
+					<p>Copyright (C) C.R HOTEL. All Rights Reserved.</p>
 				</div>
 				<div class="f_logo">
 					<h3><a href="index.do"><img src="resources/img/logo.png"></a></h3>
